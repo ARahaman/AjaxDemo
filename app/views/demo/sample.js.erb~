@@ -1,0 +1,2 @@
+$("#a1").html('<%=j render :partial=>"sample" %>');
+alert();

@@ -1,0 +1,65 @@
+<%= form_tag '', :id=>"frm", :remote=>true, :method=>"get" do %>
+
+<select name="DD">
+<option>DD</option>
+<%(1..31).to_a.each do|x|%>
+<option value="<%= x%>"><%= x%></option>
+<%end%>
+</select>
+
+<select name="MM">
+<option>MM</option>
+<%(1..12).to_a.each do|x|%>
+<option value="<%= x%>"><%= x%></option>
+<%end%>
+</select>
+
+<select name="YY">
+<option>YY</option>
+<%(12..20).to_a.each do|x|%>
+<option value="<%= x%>"><%= x%></option>
+<%end%>
+</select>
+<br/>
+
+<select name="HH">
+<option>HH</option>
+<%(1..12).to_a.each do|x|%>
+<option value="<%= x%>"><%= x%></option>
+<%end%>
+</select>
+
+<select name="MIN">
+<option>MIN</option>
+<%(0..60).to_a.each do|x|%>
+<option value="<%= x%>"><%= x%></option>
+<%end%>
+</select>
+
+<select name="DT">
+<option>Select</option>
+<option value="am">AM</option>
+<option value="pm">PM</option>
+</select>
+<br/>
+<%= submit_tag "Submit" %>
+<% end %>
+
+<hr/>
+
+<div id="result">
+<% @result.each do|x| %>
+<%= x.name %>
+<br/>
+<%end%>
+</div>
+
+<%= link_to "click", sample_demo_index_path, :remote=>true%>
+<div id="a1">testing</div>
+
+<script>
+$("#frm").submit(function(){
+$.get('', $("#frm").serialize);
+$('#result').load(" #result");
+});
+</script>
